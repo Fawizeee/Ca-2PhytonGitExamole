@@ -27,3 +27,33 @@ def view_tasks():
         for i, task in enumerate(tasks, start=1):
             status = "✓" if task['done'] else "✗"
             print(f"{i}. {task['task']} [{status}]")
+            def add_task():
+    task_name = input("\nEnter the task: ")
+    tasks.append({"task": task_name, "done": False})
+    print(f"Task '{task_name}' added!")
+
+def mark_done():
+    view_tasks()
+    if tasks:
+        try:
+            task_number = int(input("\nEnter the task number to mark as done: "))
+            if 1 <= task_number <= len(tasks):
+                tasks[task_number - 1]['done'] = True
+                print(f"Task {task_number} marked as done!")
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+def delete_task():
+    view_tasks()
+    if tasks:
+        try:
+            task_number = int(input("\nEnter the task number to delete: "))
+            if 1 <= task_number <= len(tasks):
+                removed_task = tasks.pop(task_number - 1)
+                print(f"Task '{removed_task['task']}' deleted!")
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid number.")
