@@ -57,3 +57,23 @@ def delete_task():
                 print("Invalid task number.")
         except ValueError:
             print("Please enter a valid number.")
+# Main program loop
+while True:
+    show_menu()
+    try:
+        choice = int(input("\nEnter your choice: "))
+        if choice == 1:
+            view_tasks()
+        elif choice == 2:
+            add_task()
+        elif choice == 3:
+            mark_done()
+        elif choice == 4:
+            delete_task()
+        elif choice == 5:
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please choose from 1 to 5.")
+    except ValueError:
+        print("Please enter a valid number.")
